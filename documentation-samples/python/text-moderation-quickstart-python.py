@@ -10,6 +10,7 @@ from azure.cognitiveservices.vision.contentmoderator.models import (
 from msrest.authentication import CognitiveServicesCredentials
 
 from pprint import pprint
+import io
 
 # Replace with a valid key
 subscription_key = '<your subscription key>'
@@ -27,9 +28,9 @@ client = ContentModeratorClient(endpoint_url, CognitiveServicesCredentials(subsc
 # autocorrect text, check for personally identifying 
 # information (PII), and classify text
 screen = client.text_moderation.screen_text(
-    "eng",
-    "text/plain",
-    TEXT,
+    text_content=io.StringIO(TEXT),
+    language="eng",
+    text_content_type="text/plain",
     autocorrect=True,
     pii=True,
     classify=True
