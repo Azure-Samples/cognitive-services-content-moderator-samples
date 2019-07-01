@@ -21,10 +21,11 @@ Crap is the profanity here. Is this information PII? phone 3144444444
 """
 
 # Create the Content Moderator client
-client = ContentModeratorClient(endpoint_url, CognitiveServicesCredentials(subscription_key))
+client = ContentModeratorClient(
+    endpoint_url, CognitiveServicesCredentials(subscription_key))
 
-# Screen the input text: check for profanity, 
-# autocorrect text, check for personally identifying 
+# Screen the input text: check for profanity,
+# autocorrect text, check for personally identifying
 # information (PII), and classify text
 screen = client.text_moderation.screen_text(
     "eng",
