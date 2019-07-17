@@ -70,25 +70,25 @@ AUTHENTICATE
 Create a single client for all samples, except for human reviews. It needs its own client.
 '''
 # Set your environment variables with the values of your key and region, "westus" is the default region.
-SUBSCRIPTION_KEY = os.environ.get('CONTENTMODERATOR_SUBSCRIPTION_KEY')
-REGION = os.environ.get('CONTENTMODERATOR_REGION', 'westus')
+SUBSCRIPTION_KEY = os.environ.get('CONTENT_MODERATOR_SUBSCRIPTION_KEY')
+ENDPOINT = os.environ.get('CONTENT_MODERATOR_ENDPOINT', 'https://westus.api.cognitive.microsoft.com')
+REGION = os.environ.get('CONTENT_MODERATOR_REGION', 'westus')
 
-client = ContentModeratorClient(endpoint='https://'+REGION+'.api.cognitive.microsoft.com',
-        credentials=CognitiveServicesCredentials(SUBSCRIPTION_KEY))
+client = ContentModeratorClient(endpoint=ENDPOINT, credentials=CognitiveServicesCredentials(SUBSCRIPTION_KEY))
 
 # Need a special client for the human reviews (due to unique key)
 # Need to get key from Content Moderator website,
 # go to gear symbol (Settings) --> Credentials --> Ocp-Apim-Subscription-Key
 # Set your key and region in your environment variables.
-REVIEWS_SUBSCRIPTION_KEY = os.environ.get('CONTENTMODERATOR_REVIEWS_KEY')
+REVIEWS_SUBSCRIPTION_KEY = os.environ.get('CONTENT_MODERATOR_REVIEWS_KEY')
 # Where the image for review gets sent to.
 call_back_endpoint = 'https://{}.api.cognitive.microsoft.com/contentmoderator/review/v1.0'.format(REGION)
-client_reviews = ContentModeratorClient(endpoint='https://'+ REGION +'.api.cognitive.microsoft.com',
+client_reviews = ContentModeratorClient(endpoint= ENDPOINT,
     credentials=CognitiveServicesCredentials(REVIEWS_SUBSCRIPTION_KEY))
 # The name of the team to assign to the human review job. Add to your environment variables.
 # The team name is the Id you used to create your account from the Content Moderator web site. 
 # https://{YOUR_REGION}.contentmoderator.cognitive.microsoft.com
-team_name = os.environ.get('CONTENTMODERATOR_TEAM_NAME')
+team_name = os.environ.get('CONTENT_MODERATOR_TEAM_NAME')
 '''
 END - Authenticate
 '''
@@ -135,6 +135,29 @@ print()
 END - IMAGE MODERATION
 '''
 print('##############################################################################\n')
+
+'''
+TEXT MODERATION
+Detect, extract, and moderate text from a string in a local file.
+'''
+print('EVALUATE TEXT')
+print()
+
+# Screen the input text: check for profanity, autocorrect text, 
+# check for personally identifying information (PII), and classify text.
+# The parameter 'text_content' expects a File object, which it can call read() on.
+with open('content_moderator_text_moderation.txt', "rb") as text_file:
+    screen = client.text_moderation.screen_text(language="eng", text_content_type="text/plain", text_content=text_file, autocorrect=True, pii=True, classify=True)
+    assert isinstance(screen, Screen)
+    # Format and print
+    text_mod_results = list(screen.as_dict().items())
+    for result in text_mod_results:
+        print(result)
+    print()
+'''
+END - TEXT MODERATION
+'''
+print('\n##############################################################################\n')
 
 '''
 CUSTOM IMAGES LIST
