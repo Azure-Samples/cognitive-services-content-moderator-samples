@@ -1,1 +1,0 @@
-This text contains the terms "hello" and "wave".
