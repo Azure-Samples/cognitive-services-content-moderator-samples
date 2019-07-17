@@ -1,3 +1,4 @@
+<snippet_Create>
 import os.path
 import time
 import uuid
@@ -9,6 +10,7 @@ from azure.cognitiveservices.vision.contentmoderator.models import (Evaluate, OC
         TermList, Terms, TermsData, Screen, # terms lists
         CreateReviewBodyItem ) # create human review for images
 from msrest.authentication import CognitiveServicesCredentials
+</snippet_Create>
 
 '''
 CONTENT MODERATOR - QUICKSTART 
@@ -38,10 +40,10 @@ This quickstart contains the following tasks:
 # Image moderation 
 IMAGE_MODERATION = ['https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg',
                     'https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png']
-
+<snippet_Create>
 # Text moderation
 TEXT_MODERATION_FILE = 'content_moderator_text_moderation.txt'
-
+</snippet_Create>
 # Image lists for the custom image lists
 # Images need to have a minimum of 128 pixels and a maximum file size of 4MB
 IMAGE_LIST = {
@@ -139,7 +141,7 @@ print()
 END - IMAGE MODERATION
 '''
 print('##############################################################################\n')
-
+<snippet_Create>
 '''
 TEXT MODERATION
 Detect, extract, and moderate text from a string in a local file.
@@ -160,6 +162,7 @@ with open(TEXT_MODERATION_FILE, "rb") as text_file:
 '''
 END - TEXT MODERATION
 '''
+<snippet_Create>
 print('\n##############################################################################\n')
 
 '''
