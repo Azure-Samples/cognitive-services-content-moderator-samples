@@ -1,4 +1,4 @@
-<snippet_Create>
+//<snippet_Create>
 import os.path
 import time
 import uuid
@@ -10,7 +10,7 @@ from azure.cognitiveservices.vision.contentmoderator.models import (Evaluate, OC
         TermList, Terms, TermsData, Screen, # terms lists
         CreateReviewBodyItem ) # create human review for images
 from msrest.authentication import CognitiveServicesCredentials
-</snippet_Create>
+//</snippet_Create>
 
 '''
 CONTENT MODERATOR - QUICKSTART 
