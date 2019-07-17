@@ -19,6 +19,7 @@ Prerequisites:
     - Install the SDK from the command line: 
         pip install azure-cognitiveservices-vision-contentmoderator
     - Make sure the terms list file is in your working folder: content_moderator_term_list.txt
+    - Create environment variables where indicated (all are before Image Moderation starts).
 
 How to run:
     - From the command line (from working directory): python content_moderator_quickstart.py
@@ -30,6 +31,7 @@ References:
 
 This quickstart contains the following tasks:
     - Image moderation
+    - Text moderation
     - Custom images list
     - Custom terms list
     - Create human images review
@@ -53,6 +55,9 @@ IMAGES_TO_MATCH = [ 'https://moderatorsampleimages.blob.core.windows.net/samples
                     'https://moderatorsampleimages.blob.core.windows.net/samples/sample4.png',
                     'https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png',
                     'https://moderatorsampleimages.blob.core.windows.net/samples/sample16.png' ]
+
+# File used for text moderation. Make sure this file is in root folder.
+TEXT_FILE = 'content_moderator_text_moderation.txt'
 
 # Terms for the custom terms list
 TERM_LIST_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)))
@@ -146,7 +151,7 @@ print()
 # Screen the input text: check for profanity, autocorrect text, 
 # check for personally identifying information (PII), and classify text.
 # The parameter 'text_content' expects a File object, which it can call read() on.
-with open('content_moderator_text_moderation.txt', "rb") as text_file:
+with open(TEXT_FILE, "rb") as text_file:
     screen = client.text_moderation.screen_text(language="eng", text_content_type="text/plain", text_content=text_file, autocorrect=True, pii=True, classify=True)
     assert isinstance(screen, Screen)
     # Format and print
