@@ -41,10 +41,10 @@ This quickstart contains the following tasks:
 IMAGE_MODERATION = ['https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg',
                     'https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png']
 
-# <snippet_TextModerationFile>
+# <snippet_Textmoderationfile>
 # Text moderation
 TEXT_MODERATION_FILE = 'content_moderator_text_moderation.txt'
-# </snippet_TextModerationFile>
+# </snippet_Textmoderationfile>
 
 # Image lists for the custom image lists
 # Images need to have a minimum of 128 pixels and a maximum file size of 4MB
@@ -151,7 +151,7 @@ END - IMAGE MODERATION
 '''
 print('##############################################################################\n')
 
-# <snippet_TextModeration>
+# <snippet_Textmoderation>
 '''
 TEXT MODERATION
 Detect, extract, and moderate text from a string in a local file.
@@ -172,7 +172,7 @@ with open(TEXT_MODERATION_FILE, "rb") as text_file:
 '''
 END - TEXT MODERATION
 '''
-# </snippet_TextModeration>
+# </snippet_Textmoderation>
         
 print('\n##############################################################################\n')
 
