@@ -99,7 +99,7 @@ REVIEWS_SUBSCRIPTION_KEY = os.environ.get('CONTENT_MODERATOR_REVIEWS_KEY')
 # Where the image for review gets sent to.
 call_back_endpoint = 'https://{}.api.cognitive.microsoft.com/contentmoderator/review/v1.0'.format(REGION)
 client_reviews = ContentModeratorClient(endpoint= ENDPOINT,
-    credentials=CognitiveServicesCredentials(REVIEWS_SUBSCRIPTION_KEY))
+    credentials=CognitiveServicesCredentials(SUBSCRIPTION_KEY))
 # The name of the team to assign to the human review job. Add to your environment variables.
 # The team name is the Id you used to create your account from the Content Moderator web site. 
 # https://{YOUR_REGION}.contentmoderator.cognitive.microsoft.com
