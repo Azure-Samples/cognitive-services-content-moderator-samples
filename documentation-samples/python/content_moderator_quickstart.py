@@ -1,4 +1,4 @@
-# <snippet_imports>
+# <snippet_Imports>
 import os.path
 import time
 import uuid
@@ -10,7 +10,7 @@ from azure.cognitiveservices.vision.contentmoderator.models import (Evaluate, OC
         TermList, Terms, TermsData, Screen, # terms lists
         CreateReviewBodyItem ) # create human review for images
 from msrest.authentication import CognitiveServicesCredentials
-# </snippet_imports>
+# </snippet_Imports>
 
 '''
 CONTENT MODERATOR - QUICKSTART 
@@ -41,10 +41,10 @@ This quickstart contains the following tasks:
 IMAGE_MODERATION = ['https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg',
                     'https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png']
 
-# <snippet_textmoderationfile>
+# <snippet_TextModerationFile>
 # Text moderation
 TEXT_MODERATION_FILE = 'content_moderator_text_moderation.txt'
-# </snippet_textmoderationfile>
+# </snippet_TextModerationFile>
 
 # Image lists for the custom image lists
 # Images need to have a minimum of 128 pixels and a maximum file size of 4MB
@@ -77,19 +77,19 @@ LATENCY_DELAY = 0.5
 AUTHENTICATE
 Create a single client for all samples, except for human reviews. It needs its own client.
 '''
-# <snippet_authentication>
+# <snippet_Authentication>
 # Set your environment variables with the values of your key and region, "westus" is the default region.
 SUBSCRIPTION_KEY = os.environ.get('CONTENT_MODERATOR_SUBSCRIPTION_KEY')
 ENDPOINT = os.environ.get('CONTENT_MODERATOR_ENDPOINT', 'https://westus.api.cognitive.microsoft.com')
-# </snippet_authentication>
+# </snippet_Authentication>
 
 # Get region for the human reviews callback endpoint
 REGION = os.environ.get('CONTENT_MODERATOR_REGION', 'westus')
 
-# <snippet_client>
+# <snippet_Client>
 # Create client 
 client = ContentModeratorClient(endpoint=ENDPOINT, credentials=CognitiveServicesCredentials(SUBSCRIPTION_KEY))
-# </snippet_client>
+# </snippet_Client>
 
 # Need a special client for the human reviews (due to unique key)
 # Need to get key from Content Moderator website,
@@ -151,7 +151,7 @@ END - IMAGE MODERATION
 '''
 print('##############################################################################\n')
 
-# <snippet_textmoderation>
+# <snippet_TextModeration>
 '''
 TEXT MODERATION
 Detect, extract, and moderate text from a string in a local file.
@@ -172,7 +172,7 @@ with open(TEXT_MODERATION_FILE, "rb") as text_file:
 '''
 END - TEXT MODERATION
 '''
-# </snippet_textmoderation>
+# </snippet_TextModeration>
         
 print('\n##############################################################################\n')
 
