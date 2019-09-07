@@ -83,16 +83,15 @@ namespace ImageModeration
     // Wraps the creation and configuration of a Content Moderator client.
     public static class Clients
     {
-        // The region/location for your Content Moderator account, 
-        // for example, westus.
-        private static readonly string AzureRegion = "YOUR API REGION";
-
         // The base URL fragment for Content Moderator calls.
+        // Add your Azure Content Moderator endpoint to your environment variables.
         private static readonly string AzureBaseURL =
-            $"https://{AzureRegion}.api.cognitive.microsoft.com";
+            Environment.GetEnvironmentVariable("FACE_ENDPOINT");
 
         // Your Content Moderator subscription key.
-        private static readonly string CMSubscriptionKey = "YOUR API KEY";
+        // Add your Azure Content Moderator subscription key to your environment variables.
+        private static readonly string CMSubscriptionKey = 
+            Environment.GetEnvironmentVariable("CONTENT_MODERATOR_SUBSCRIPTION_KEY");
 
         // Returns a new Content Moderator client for your subscription.
         public static ContentModeratorClient NewClient()
