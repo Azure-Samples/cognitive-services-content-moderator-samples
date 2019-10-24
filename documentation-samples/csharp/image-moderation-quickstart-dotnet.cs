@@ -1,3 +1,4 @@
+// <snippet_using>
 using Microsoft.Azure.CognitiveServices.ContentModerator;
 using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
@@ -5,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-
+// </snippet_using>
 
 namespace ImageModeration
 {
@@ -13,6 +14,7 @@ namespace ImageModeration
     {
         static void Main(string[] args)
         {
+            // <snippet_main>
             // Create an object to store the image moderation results.
             List<EvaluationData> evaluationData = new List<EvaluationData>();
 
@@ -43,14 +45,18 @@ namespace ImageModeration
                 outputWriter.Flush();
                 outputWriter.Close();
             }
+            // </snippet_main>
         }
 
+        // <snippet_fields>
         //The name of the file that contains the image URLs to evaluate.
         private static string ImageUrlFile = "ImageFiles.txt";
 
         ///The name of the file to contain the output from the evaluation.
         private static string OutputFile = "ModerationOutput.json";
+        // </snippet_fields>
 
+        // <snippet_evaluate>
         // Evaluates an image using the Image Moderation APIs.
         private static EvaluationData EvaluateImage(
           ContentModeratorClient client, string imageUrl)
@@ -78,8 +84,10 @@ namespace ImageModeration
 
             return imageData;
         }
+        // </snippet_evaluate>
     }
 
+    // <snippet_client>
     // Wraps the creation and configuration of a Content Moderator client.
     public static class Clients
     {
@@ -103,7 +111,9 @@ namespace ImageModeration
             return client;
         }
     }
+    // </snippet_client>
 
+    // <snippet_dataclass>
     // Contains the image moderation results for an image, 
     // including text and face detection results.
     public class EvaluationData
@@ -120,4 +130,5 @@ namespace ImageModeration
         // The face detection results;
         public FoundFaces FaceDetection;
     }
+    // </snippet_dataclass>
 }
