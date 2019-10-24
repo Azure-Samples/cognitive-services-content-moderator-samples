@@ -1,3 +1,4 @@
+// <snippet_using>
 using Microsoft.Azure.CognitiveServices.ContentModerator;
 using Microsoft.CognitiveServices.ContentModerator;
 using Microsoft.CognitiveServices.ContentModerator.Models;
@@ -6,20 +7,23 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+// </snippet_using>
 
 namespace TextModeration
 {
     class Program
     {
-
+        // <snippet_fields>
         // The name of the file that contains the text to evaluate.
         private static string TextFile = "TextFile.txt";
 
         // The name of the file to contain the output from the evaluation.
         private static string OutputFile = "TextModerationOutput.txt";
+        // </snippet_fields>
         
         static void Main(string[] args)
         {
+            // <snippet_main>
             // Load the input text.
             string text = File.ReadAllText(TextFile);
             Console.WriteLine("Screening {0}", TextFile);
@@ -46,11 +50,12 @@ namespace TextModeration
                 outputWriter.Flush();
                 outputWriter.Close();
             }
-
+            // </snippet_main>
         }
 
     }
 
+    // <snippet_client>
     // Wraps the creation and configuration of a Content Moderator client.
     public static class Clients
     {
@@ -74,4 +79,5 @@ namespace TextModeration
             return client;
         }
     }
+    // </snippet_client>
 }
